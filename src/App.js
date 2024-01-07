@@ -24,13 +24,15 @@ function App() {
         return(
           <div className="todo">
           <div className="left">
-            <input onChange={(e)=>{
-              setToDos(toDos.filter(value2=>{
-                if(value2.id==value.id){
-                  value2.status=e.target.checked
-                }
-              }))
-            }} value={value.status} type="checkbox" name="" id="" />
+          <input
+                onChange={(e) => {
+                    setToDos(toDos.map((value2) => (value2.id === value.id ? { ...value2, status: e.target.checked } : value2)));
+                }}
+                checked={value.status}
+                type="checkbox"
+                name=""
+                id=""
+        />
             <p>{value.text}</p>
           </div>
           <div className="right">
