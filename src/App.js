@@ -25,12 +25,16 @@ function App() {
           <div className="todo">
           <div className="left">
             <input onChange={(e)=>{
-              
+              setToDos(toDos.filter(value2=>{
+                if(value2.id==value.id){
+                  value2.status=e.target.checked
+                }
+              }))
             }} value={value.status} type="checkbox" name="" id="" />
             <p>{value.text}</p>
           </div>
           <div className="right">
-            <i className="fas fa-times"></i>
+            <i onClick={() => setToDos(toDos.filter(value2 => value2.id !== value.id))} className="fas fa-times"></i>
           </div>
         </div> 
         ) })}
